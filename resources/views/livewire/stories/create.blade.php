@@ -32,11 +32,11 @@
 
             <div class="grid grid-cols-2 gap-4">
                 <flux:select wire:model="language" :label="__('Language')">
-                    <option value="en">{{ __('English') }}</option>
-                    <option value="ar">{{ __('Arabic') }}</option>
-                    <option value="fr">{{ __('French') }}</option>
-                    <option value="es">{{ __('Spanish') }}</option>
-                    <option value="de">{{ __('German') }}</option>
+                    <option value="Arabic">{{ __('Arabic') }}</option>
+                    <option value="English">{{ __('English') }}</option>
+                    <option value="French">{{ __('French') }}</option>
+                    <option value="Spanish">{{ __('Spanish') }}</option>
+                    <option value="German">{{ __('German') }}</option>
                 </flux:select>
 
                 <flux:input

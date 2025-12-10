@@ -9,9 +9,11 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('v1')->middleware('auth:sanctum')->group(function () {
     // Story Page Image Prompts
     Route::get('story-page-image-prompts', [StoryPageImagePromptController::class, 'index']);
+    Route::post('story-page-image-prompts', [StoryPageImagePromptController::class, 'store']);
 
     // Story Cover Image Prompts
     Route::get('story-cover-image-prompts', [StoryCoverImagePromptController::class, 'index']);
+    Route::post('story-cover-image-prompts', [StoryCoverImagePromptController::class, 'store']);
 
     // Story Custom Made Images
     Route::get('story-custom-made-images', [StoryCustomMadeImageController::class, 'index']);

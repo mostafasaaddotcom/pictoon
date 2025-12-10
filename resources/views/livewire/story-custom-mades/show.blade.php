@@ -68,7 +68,7 @@
                             {{ __('Child Image') }}
                         </flux:text>
                         <div class="mt-2">
-                            <img src="{{ $customMade->child_image_url }}" alt="{{ $customMade->child_name }}" class="h-32 w-32 rounded-lg object-cover">
+                            <img src="{{ $customMade->child_image_url }}" alt="{{ $customMade->child_name }}" width="100" height="100" class="rounded-lg object-cover">
                         </div>
                     </div>
                 @endif

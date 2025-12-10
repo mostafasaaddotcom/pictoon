@@ -37,7 +37,7 @@
                 <div wire:key="image-{{ $image->id }}" class="rounded-lg border border-zinc-200 bg-white p-4 dark:border-zinc-700 dark:bg-zinc-900">
                     <div class="flex flex-col gap-3">
                         @if ($image->image_url)
-                            <img src="{{ $image->image_url }}" alt="Page {{ $image->page_number }}" class="h-32 w-full rounded-lg object-cover">
+                            <img src="{{ $image->image_url }}" alt="Page {{ $image->page_number }}" width="250" height="250" class="rounded-lg object-cover">
                         @else
                             <div class="flex h-32 items-center justify-center rounded-lg bg-zinc-100 dark:bg-zinc-800">
                                 <flux:icon name="photo" class="h-8 w-8 text-zinc-400" />

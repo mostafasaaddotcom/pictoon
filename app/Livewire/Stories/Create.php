@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Stories;
 
+use App\Jobs\SendStoryWebhookJob;
 use App\Models\Story;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
@@ -16,7 +17,7 @@ class Create extends Component
 
     public string $moral_lesson = '';
 
-    public string $language = 'en';
+    public string $language = 'Arabic';
 
     public int $pages_count = 10;
 
@@ -33,7 +34,7 @@ class Create extends Component
             'idea' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string'],
             'moral_lesson' => ['required', 'string', 'max:255'],
-            'language' => ['required', 'string', 'in:en,ar,fr,es,de'],
+            'language' => ['required', 'string', 'in:English,Arabic,French,Spanish,German'],
             'pages_count' => ['required', 'integer', 'min:1', 'max:50'],
             'images_input' => ['nullable', 'string'],
             'is_active' => ['boolean'],
@@ -41,7 +42,7 @@ class Create extends Component
 
         $images = $this->parseImages($validated['images_input'] ?? '');
 
-        Story::create([
+        $story = Story::create([
             'user_id' => Auth::id(),
             'idea' => $validated['idea'],
             'description' => $validated['description'],
@@ -51,6 +52,8 @@ class Create extends Component
             'images' => $images,
             'is_active' => $validated['is_active'],
         ]);
+
+        SendStoryWebhookJob::dispatch($story);
 
         $this->redirect(route('stories.index'), navigate: true);
     }
